@@ -99,3 +99,6 @@ SELECT instructor_name,
        RANK ( ) OVER (Order by total_enrollments DESC ) AS enrollment_rank,
        LAG(total_revenue) OVER (Order by total_revenue  DESC )- total_revenue AS revenue_gap_from_previous
   FROM table_summary;
+
+
+Compiled and Practiced on : https://www.thequerylab.com/
