@@ -1,0 +1,83 @@
+# Instructor Performance Leaderboard SQL Challenge
+
+## Problem Statement
+
+You are working as a data analyst for an online learning platform.
+
+The leadership team wants to build a monthly performance leaderboard to recognize top-performing instructors.
+
+Each instructor teaches multiple courses, and students enroll in these courses, generating revenue for the platform.
+
+Management wants a leaderboard report that helps:
+
+* Identify top-performing instructors
+* Compare instructor performance
+* Analyze revenue differences between rankings
+* Support bonus, promotion, and marketing decisions
+
+---
+
+## Input Tables
+
+### instructors
+
+| instructor_id | instructor_name |
+| ------------- | --------------- |
+| 1             | Alice           |
+| 2             | Bob             |
+| 3             | Charlie         |
+| 4             | Diana           |
+
+---
+
+### courses
+
+| course_id | instructor_id | course_name      |
+| --------- | ------------- | ---------------- |
+| 101       | 1             | SQL Basics       |
+| 102       | 1             | Advanced SQL     |
+| 103       | 2             | Python for Data  |
+| 104       | 3             | Data Analytics   |
+| 105       | 4             | Machine Learning |
+
+---
+
+### enrollments
+
+| enrollment_id | course_id | enrollment_date | amount_paid |
+| ------------- | --------- | --------------- | ----------- |
+| 1             | 101       | 2024-01-05      | 100         |
+| 2             | 101       | 2024-01-06      | 100         |
+| 3             | 102       | 2024-01-10      | 150         |
+| 4             | 103       | 2024-01-12      | 200         |
+| 5             | 103       | 2024-01-15      | 200         |
+| 6             | 104       | 2024-01-18      | 180         |
+| 7             | 105       | 2024-01-20      | 250         |
+| 8             | 105       | 2024-01-22      | 250         |
+
+---
+
+## Expected Output
+
+| instructor_name | total_enrollments | total_revenue | revenue_rank | enrollment_rank | revenue_gap_from_previous |
+| --------------- | ----------------- | ------------- | ------------ | --------------- | ------------------------- |
+| Diana           | 2                 | 500           | 1            | 2               | NULL                      |
+| Bob             | 2                 | 400           | 2            | 2               | 100                       |
+| Alice           | 3                 | 350           | 3            | 1               | 50                        |
+| Charlie         | 1                 | 180           | 4            | 4               | 170                       |
+
+---
+
+## Expected Outcome
+
+Generate a leaderboard report showing:
+
+* Total enrollments per instructor
+* Total revenue generated
+* Rank instructors by revenue
+* Rank instructors by enrollments
+* Calculate revenue difference compared to the previous instructor in the revenue leaderboard
+
+---
+
+
