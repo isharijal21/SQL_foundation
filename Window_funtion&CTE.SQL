@@ -80,4 +80,22 @@ Generate a leaderboard report showing:
 
 ---
 
+ANSWER :
 
+
+WITH table_summary AS (
+    select i.instructor_name,
+    COUNT(e.enrollment_id) as total_enrollments,
+    SUM (amount_paid) as total_revenue
+    FROM instructors i
+    JOIN courses  c ON i.instructor_id = c.instructor_id
+    JOIN enrollments e ON e.course_id = c.course_id
+    GROUP BY i.instructor_name)
+
+SELECT instructor_name,
+       total_enrollments,
+       total_revenue,
+       RANK ( ) OVER(Order by total_revenue DESC) AS revenue_rank,
+       RANK ( ) OVER (Order by total_enrollments DESC ) AS enrollment_rank,
+       LAG(total_revenue) OVER (Order by total_revenue  DESC )- total_revenue AS revenue_gap_from_previous
+  FROM table_summary;
